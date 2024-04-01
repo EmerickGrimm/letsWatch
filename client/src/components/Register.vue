@@ -13,7 +13,48 @@
       <div v-if="showPrivacy" class="privacy-policy">
         <span class="close" @click="closePrivacyPolicy">&times;</span>
         <h2>Data Privacy Policy</h2>
-        <p>{{ privacyPolicyText }}</p>
+        <h3>Introduction</h3>
+        <p>This Privacy Policy describes how LetsWatch ("we," "us," or "our") collects, uses, and discloses your
+          personal information when you use our web application (the "App").</p>
+        <h3>Information We Collect</h3>
+       <ul>
+          <li><strong>Username:</strong> You provide your username when you register for an account on the App. We store
+            usernames in plain text.</li>
+          <li><strong>Password:</strong> You create a password when you register for an account on the App. We store
+            passwords using a strong, one-way encryption algorithm. This means we cannot decrypt your password back to
+            its original form, but we can verify it when you log in.</li>
+        </ul>
+        <h3>Information We Collect Through Technology</h3>
+        <h4>Session Data</h4>
+        <p>We use session storage in your browser to store temporary data while you are actively using the
+          App. This data is typically cleared when you close your browser window and does not include personally
+          identifiable information.</p>
+        <h3>How We Use Your Information</h3>
+        <ul>
+          <li>Provide and operate the App</li>
+          <li>Process your registration and manage your account</li>
+          <li>Identify you when you log in to the App</li>
+          <li>Respond to your inquiries and requests</li>
+        </ul>
+        <h3>Information Sharing and Disclosure</h3>
+        <p>We do not share or sell your personal information to third parties. We may disclose your information if
+          required by law or in the good faith belief that such disclosure is necessary to:</p>
+        <ul>
+          <li>Comply with a legal obligation</li>
+          <li>Protect the rights or safety of you, another user, or the public</li>
+          <li>Prevent or investigate fraud or other unlawful activity</li>
+        </ul>
+
+        <h3>Data Security</h3>
+
+        <p>We take reasonable precautions to protect your personal information from unauthorized access, disclosure,
+          alteration, or destruction. However, no internet transmission or electronic storage method is completely
+          secure. Therefore, we cannot guarantee absolute security.</p>
+
+        <h3>Contact Us</h3>
+
+        <p>If you have any questions about this Privacy Policy, please create an issue on the project's repository:
+          <a href="https://github.com/EmerickGrimm/letsWatch">[link to repository].</a></p>
       </div>
     </div>
     <div v-else>
@@ -35,7 +76,6 @@ export default {
       error: null,
       isLoggedIn: false,
       showPrivacy: false,
-      privacyPolicyText: `This is the privacy policy text.`
     }
   },
   async created() {
@@ -190,8 +230,10 @@ export default {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  max-width: 90%; 
+  max-height: 90%; 
+  overflow-y: auto; 
 }
-
 .close {
   position: absolute;
   top: 10px;

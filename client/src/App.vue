@@ -22,5 +22,7 @@ export default {
 
 body {
   background-color: #FEECE2; 
+  overflow: hidden;
+
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="centered-container">
     <div v-if="!isLoggedIn" class="registration-form">
-      <h1>Registration</h1>
+      <h1>Log In</h1>
       <input type="text" v-model="username" placeholder="Username" class="input-field">
       <br>
       <input type="password" v-model="password" placeholder="Password" class="input-field">
       <br>
-      <button @click="register" class="register-button">Registration</button>
-      <a href="/login" class="create-account-link">Log In</a>
+      <button @click="login" class="register-button">Log In</button>
+      <a href="/register" class="create-account-link">Create Account</a>
       <p v-if="error" class="error-message">{{ error }}</p>
       <button @click="showPrivacyPolicy" class="privacy-policy-button">View Data Privacy Policy</button>
       <div v-if="showPrivacy" class="privacy-policy">
@@ -55,16 +55,16 @@ export default {
     }
   },
   methods: {
-    async register() {
+    async login() {
       this.error = null;
 
-      if (!this.username || this.username.length < 3) {
-        this.error = "Username must be at least 3 characters long.";
+      if (!this.username) {
+        this.error = "Username is required!";
         return;
       }
 
-      if (!this.password || this.password.length < 8) {
-        this.error = "Password must be at least 8 characters long.";
+      if (!this.password) {
+        this.error = "Username is required!";
         return;
       }
 
@@ -77,19 +77,19 @@ export default {
       }
 
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           username: this.username,
           password: this.password
         });
 
         if (response.status === 200) {
           sessionStorage.setItem('userToken', response.data.token);
-          this.successMessage = "Registration successful!";
+          this.successMessage = "Logged In successful!";
           this.username = '';
           this.password = '';
           this.$router.push('/');
         } else {
-          this.error = "Registration failed. Please try again.";
+          this.error = "Failed. Please try again.";
         }
       } catch (error) {
         this.error = error.response.data.error;
@@ -108,9 +108,6 @@ export default {
   }
 }
 </script>
-
-
-
 
 <style scoped>
 .centered-container {
@@ -139,17 +136,17 @@ export default {
 
 .privacy-policy-button {
   width: 75%;
-  padding: 8px;
+  padding: 8px; 
   margin: 10px 0;
   border: none;
   border-radius: 5px;
   background-color: #B08BBB;
   color: white;
-  font-size: 14px;
+  font-size: 14px; 
   cursor: pointer;
 }
 
-.register-button {
+.register-button{
   width: 100%;
   padding: 10px;
   margin: 10px 0;
